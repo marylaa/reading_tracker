@@ -4,6 +4,8 @@ import { styled } from '@mui/material/styles';
 import {logOut} from "../Firebase";
 import {useContext} from "react";
 import AuthContext from "../auth/AuthContext";
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Navbar = () => {
@@ -32,6 +34,7 @@ const Navbar = () => {
                         </div>
                     </Toolbar>
                 </CustomAppBar>
+                <ToastContainer position="top-right"></ToastContainer>
             </div>
         );
     } else {
@@ -55,6 +58,7 @@ const Navbar = () => {
                         </div>
                     </Toolbar>
                 </CustomAppBar>
+                <ToastContainer position="top-right"></ToastContainer>
             </div>
         );
     }

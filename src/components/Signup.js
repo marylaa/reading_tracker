@@ -68,7 +68,6 @@ const Signup = () => {
                     </Link>
                 </Grid>
             </Grid>
-            <ToastContainer position="top-right"></ToastContainer>
         </div>
     );
 };

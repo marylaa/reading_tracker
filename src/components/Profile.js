@@ -1,7 +1,6 @@
 import {useContext} from "react";
 import AuthContext from "../auth/AuthContext";
 import {useNavigate, Navigate} from "react-router-dom";
-import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 const Profile = () => {
@@ -16,7 +15,6 @@ const Profile = () => {
     return (
         <div>
             <h1>Hi! </h1>
-            <ToastContainer position="top-right"></ToastContainer>
         </div>
     );
 };
