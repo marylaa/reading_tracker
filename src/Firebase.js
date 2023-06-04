@@ -2,6 +2,7 @@ import {initializeApp} from "firebase/app";
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,} from "firebase/auth";
 import {getFirestore, addDoc, collection} from "firebase/firestore";
 import {toast} from "react-toastify";
+import {useEffect, useState} from "react";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBjeAltkyOnzf4zWSOoV3zyumtVzKTnZ2Q",
@@ -36,14 +37,12 @@ export const signUp = async (email, password) => {
     }
 };
 
+
 export const signIn = async (email, password) => {
     try {
-        const userCredential = await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
-        );
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
+        toast.info("Logged in successfully!")
         return true
     } catch (error) {
         return {error: error.message}
@@ -53,7 +52,7 @@ export const signIn = async (email, password) => {
 export const logOut = async () => {
     try {
         await signOut(auth)
-        toast.info("Bye!")
+        toast.info("Logged out successfully!")
         return true
     } catch (error) {
         return false
