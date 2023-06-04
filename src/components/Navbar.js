@@ -32,7 +32,7 @@ const Navbar = () => {
                             <div>
                                 <LinkNotUnderlined to="/">
                                     <WhiteTypography variant="h6">
-                                        Reading Website
+                                        Reading Tracker
                                     </WhiteTypography>
                                 </LinkNotUnderlined>
                             </div>
@@ -65,7 +65,7 @@ const Navbar = () => {
                             <div>
                                 <LinkNotUnderlined to="/">
                                     <WhiteTypography variant="h6">
-                                        Reading Website
+                                        Reading Tracker
                                     </WhiteTypography>
                                 </LinkNotUnderlined>
                             </div>
