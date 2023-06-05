@@ -28,11 +28,18 @@ const Navbar = () => {
             <div>
                 <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
                     <CustomAppBar position="static">
-                        <Toolbar variant="dense" sx={{justifyContent: "center"}}>
+                        <Toolbar variant="dense" sx={{justifyContent: "space-evenly"}}>
                             <div>
                                 <LinkNotUnderlined to="/">
                                     <WhiteTypography variant="h6">
                                         Reading Tracker
+                                    </WhiteTypography>
+                                </LinkNotUnderlined>
+                            </div>
+                            <div>
+                                <LinkNotUnderlined to="profile">
+                                    <WhiteTypography variant="h6">
+                                        Your Profile
                                     </WhiteTypography>
                                 </LinkNotUnderlined>
                             </div>

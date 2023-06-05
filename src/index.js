@@ -9,6 +9,7 @@ import Profile from "./components/Profile";
 import {AuthProvider} from "./auth/AuthProvider";
 import Signup from "./components/Signup";
 import MainPage from "./components/MainPage"
+import DataForm from "./components/DataForm";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +22,7 @@ root.render(
                     <Route path="login" element={<Login/>}/>
                     <Route path="profile" element={<Profile/>}/>
                     <Route path="register" element={<Signup/>}/>
+                    <Route path="form" element={<DataForm/>}/>
                 </Routes>
             </AuthProvider>
         </BrowserRouter>
