@@ -34,18 +34,18 @@ const Login = () => {
     }));
 
     return (
-        <div style={{flexDirection: "column", display: "flex", justifyContent: "center", alignItems: "center"}}>
+        <div style={{flexDirection: "column", display: "flex", justifyContent: "center", alignItems: "center", marginTop: "60px"}}>
             <h3>Login Form</h3>
 
             <Avatar
                 alt="avatar"
                 src={require("../images/signin1.png")}
                 sx={{width: 116, height: 108}}
-                style={{alignSelf: "center", display: "flex"}}/>
+                style={{alignSelf: "center", display: "flex", marginTop: "10px"}}/>
 
             <Box
                 component="form"
-                sx={{ '& > :not(style)': { m: 1, width: '25ch' }, display: "flex", flexDirection: "column", alignItems: "center" }}
+                sx={{ '& > :not(style)': { m: 1, width: '25ch' }, display: "flex", flexDirection: "column", alignItems: "center", marginTop: "20px" }}
                 noValidate
                 autoComplete="off">
                 <TextField
@@ -62,7 +62,7 @@ const Login = () => {
             </Box>
             <ColorButton variant='contained' onClick={handleSubmit}> Log in</ColorButton>
 
-            <Grid container justifyContent="center" style={{ marginTop: "20px"}}>
+            <Grid container justifyContent="center" style={{ marginTop: "30px"}}>
                 <Grid item>
                     <Link to="/register">
                         Need an account? Sign Up

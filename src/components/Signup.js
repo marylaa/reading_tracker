@@ -32,18 +32,18 @@ const Signup = () => {
     }));
 
     return (
-        <div style={{flexDirection: "column", display: "flex", justifyContent: "center", alignItems: "center"}}>
+        <div style={{flexDirection: "column", display: "flex", justifyContent: "center", alignItems: "center", marginTop: "60px"}}>
             <h3>Sign Up Form</h3>
 
             <Avatar
                 alt="avatar"
                 src={require("../images/signup.png")}
                 sx={{width: 115, height: 108}}
-                style={{alignSelf: "center", display: "flex"}}/>
+                style={{alignSelf: "center", display: "flex", marginTop: "10px"}}/>
 
             <Box
                 component="form"
-                sx={{ '& > :not(style)': { m: 1, width: '25ch' }, display: "flex", flexDirection: "column", alignItems: "center" }}
+                sx={{ '& > :not(style)': { m: 1, width: '25ch' }, display: "flex", flexDirection: "column", alignItems: "center", marginTop: "20px" }}
                 noValidate
                 noValidate
                 autoComplete="off">
@@ -61,7 +61,7 @@ const Signup = () => {
             </Box>
             <ColorButton variant='contained' onClick={handleSubmit}> Register</ColorButton>
 
-            <Grid container justifyContent="center" style={{ marginTop: "20px"}}>
+            <Grid container justifyContent="center" style={{ marginTop: "30px"}}>
                 <Grid item>
                     <Link to="/login">
                         Already registered? Log in
