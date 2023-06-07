@@ -1,8 +1,7 @@
 import {initializeApp} from "firebase/app";
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,} from "firebase/auth";
-import {getFirestore, addDoc, collection} from "firebase/firestore";
+import {getFirestore, addDoc, collection, Timestamp, getDocs, query, where} from "firebase/firestore";
 import {toast} from "react-toastify";
-import {useEffect, useState} from "react";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBjeAltkyOnzf4zWSOoV3zyumtVzKTnZ2Q",
@@ -57,4 +56,43 @@ export const logOut = async () => {
     } catch (error) {
         return false
     }
+};
+
+export const addData = async (newData) => {
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleString('en-US', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    });
+
+    try {
+        await addDoc(collection(db, 'statistics'), {
+            time: newData.time,
+            quantity: newData.quantity,
+            date: formattedDate,
+            user: auth.currentUser.uid
+        })
+        toast.info("Statistics added!")
+    } catch(err) {
+        console.error(err)
+    }
+};
+
+export const getData = async (userId) => {
+    const q = query(collection(db, 'statistics'), where ("user", "==", userId));
+    const userStatistics = [];
+
+    try {
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            userStatistics.push(doc.data());
+            //console.log(doc.id, "=>", doc.data());
+        });
+    } catch(err) {
+        console.error(err)
+    }
+
+    return userStatistics;
+    //console.log(userStatistics);
 };

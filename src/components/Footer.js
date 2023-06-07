@@ -5,7 +5,8 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 const Footer = () => {
     return (
         // <footer style={{ marginTop: "40px", marginBottom: "5px" }}>
-        <footer style={{ position: "fixed", bottom: 0, left: 0, right: 0 }}>
+        // <footer style={{ position: "fixed", bottom: 0, left: 0, right: 0 }}>
+        <footer style={{ marginTop: "90px" }}>
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
                 <div>
                     Additional contact information:

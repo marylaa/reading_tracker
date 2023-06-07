@@ -1,24 +1,70 @@
-import {useContext} from "react";
+import {useContext, useEffect, useState} from "react";
 import AuthContext from "../auth/AuthContext";
 import {Navigate, useNavigate} from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import * as React from "react";
-import Button from '@mui/material-next/Button';
 import Typography from "@mui/material/Typography";
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import {IconButton} from "@mui/material";
+import {getData} from "../Firebase";
 
 
 const Profile = () => {
 
+    const [stats, setStats] = useState([]);
+    const [days, setDays] = useState(0);
     const {user} = useContext(AuthContext);
     let navigate = useNavigate();
+
+    useEffect(()=>{
+        if(user) {
+            getData(user.uid).then(todos => setStats(todos));
+        }
+    },[user]);
+
+    useEffect(()=>{
+        if(stats) {
+            setDays(getDaysInARow());
+        }
+    },[stats]);
 
     if (!user) {
         return <Navigate replace to="login"/>;
     }
 
     const handleClick = () => {
-        console.log("gruba kicia")
         navigate("/form")
+    };
+
+    const getDaysInARow = () => {
+        var daysInARow = 0;
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+        const day = currentDate.getDate();
+
+        var dateNow = new Date(year, month, day);
+        var today = true;
+
+        do {
+            var ifChanged = false;
+            stats.forEach((stat) => {
+                const dateStat = new Date(stat.date);
+                if(dateStat.getTime() === dateNow.getTime()) {
+                    daysInARow++;
+                    dateNow.setDate(dateNow.getDate() - 1);
+                    ifChanged = true;
+                    today = false;
+                }
+            })
+            if(today && !ifChanged) {
+                ifChanged = true;
+                today = false;
+                dateNow.setDate(dateNow.getDate() - 1);
+            }
+        } while(ifChanged)
+
+        return daysInARow
     };
 
     return (
@@ -29,7 +75,7 @@ const Profile = () => {
                 </div>
                 <div style={{ marginTop: "40px", justifyContent: "center", display: "flex", alignItems: "center", flexDirection: "column" }}>
                     Reading days in a row
-                    <h1>5</h1>
+                    <h1>{days}</h1>
                 </div>
             </div>
             <div style={{ width: "43%", justifyContent: "center", display: "flex", alignItems: "center" }}>
@@ -37,10 +83,11 @@ const Profile = () => {
                     Click the button and add your today's reading sessions. Track your reading progress and gain valuable insights
                     into your reading habits.
                 </Typography>
-                <Button size="large" variant="elevated" onClick={handleClick} >Add your reading data</Button>
+                <IconButton aria-label="fingerprint" color="secondary" onClick={handleClick}>
+                    <AddCircleIcon fontSize="large"/>
+                </IconButton>
             </div>
         </div>
-    )
-        ;
+    );
 };
 export default Profile;

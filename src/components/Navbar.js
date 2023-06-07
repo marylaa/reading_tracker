@@ -1,21 +1,21 @@
 import {AppBar, Toolbar, Typography} from "@mui/material";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {styled} from '@mui/material/styles';
 import {logOut} from "../Firebase";
 import {useContext} from "react";
 import AuthContext from "../auth/AuthContext";
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import AutoStoriesIcon from '@mui/icons-material/AutoStories';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import MainPage from "./MainPage";
 
 
 const Navbar = () => {
 
+    let navigate = useNavigate();
+
     const {user} = useContext(AuthContext);
     const handleLogOut = async () => {
         await logOut();
+        navigate("/")
     };
 
     const CustomAppBar = styled(AppBar)`background-color: rgb(78, 23, 94);`;
